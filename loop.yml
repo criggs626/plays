@@ -1,0 +1,15 @@
+---
+
+- hosts: localhost
+  vars: 
+    Veggies:
+      - "Lettuce"
+      - "Not_Tomatoe"
+      - "Uhhh_I_don't_eat_healthy_I'm_a_programer"
+  tasks:
+    - debug:
+        msg: "Create empty files with fruits and then vegetables using loops"
+    - command: touch {{ item }}
+      with_items: ["Apple","Orange","Strawberry"]
+    - command: touch {{ item }}
+      with_items: "{{ Veggies }}"

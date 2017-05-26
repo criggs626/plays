@@ -1,0 +1,6 @@
+---
+
+- hosts: test
+  gather_facts: no
+  tasks:
+  - debug: var=hostvars[inventory_hostname]["ansible_host"]

@@ -1,0 +1,18 @@
+---
+- hosts: test
+  gather_facts: no
+  tasks:
+  - debug: var=hostvars[inventory_hostname]['ansible_default_ipv4']['address']
+  - name: fetch file from server
+    fetch: src="fetchTest/fetchTest.txt" dest="~/"
+
+- hosts: localhost
+  user: riggsc
+  tasks:
+  - debug: var=hostvars[inventory_hostname]['ansible_default_ipv4']['address']
+  - name: display fetched file
+    shell: mv ~/test/fetchTest/fetchTest.txt ~/
+  - name: remove directory
+    file:
+      state: absent
+      path: ~/test/
