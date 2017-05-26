@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: devBox
   tasks:
   - name: Test Connection
     ping:
