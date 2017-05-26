@@ -1,3 +1,6 @@
 ---
-- name: Test Connection
-  ping:
+- hosts: localhost
+  tasks:
+  - name: Test Connection
+    ping:
+  
