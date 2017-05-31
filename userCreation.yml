@@ -1,15 +1,22 @@
 ---
+# To run run sudo ansible-playbook knnoasdnoii.yml -K --ask-pass 
+# (-K will allow you to input your password for becoming root)
 
+# Add the host group name here
 - hosts: HOSTNAME 
   become: true
+# add your username
+  user: USERNAME
   become_user: root
   tasks:
   - user:
       name: ansible
       groups: "sudo"
+# SHA-512 a password and supply it in this line
       password: SHA-512(PASSWORD) 
   - name: Add key
     authorized_key: 
       user: ansible
       state: present
+# Enter the directory to the id_rsa.pub
       key: "{{ lookup('file','KEYDIRECTORY')}}"
