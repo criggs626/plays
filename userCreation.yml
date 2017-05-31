@@ -1,16 +1,15 @@
 ---
 
-- hosts: REMOTEGROUP
-  user: USER
+- hosts: HOSTNAME 
   become: true
   become_user: root
   tasks:
   - user:
       name: ansible
-      grou: primary-group
       groups: "sudo"
-      password: PASSWORD
-  authorized_keys: 
+      password: SHA-512(PASSWORD) 
+  - name: Add key
+    authorized_key: 
       user: ansible
       state: present
-      key: "{{ lookup('file','/root/.shh/id_rsa.pub')}}"
+      key: "{{ lookup('file','KEYDIRECTORY')}}"
