@@ -1,0 +1,26 @@
+---
+# get info from splunkDev host
+- hosts: splunkDev
+  gather_facts: no
+  tasks:
+  # Find the directory structure of splunk-syslog
+  - find:
+      paths: "/opt/splunk-syslog"
+      file_type: directory
+    register: find_result
+  # Write the structure to temp folder (This way files are not coppied)
+  - file:
+      path: "temp{{ item.path }}"
+      state: directory
+    with_items: "{{ find_result.files }}"
+ # Pull files from the remote host using sync
+  - synchronize:
+      mode: pull
+      owner: no
+      src: /etc/syslog-ng
+      dest: /root/ansiConfig/{{hostvars[inventory_hostname]['ansible_host']}}/
+  - synchronize: 
+      mode: pull
+      owner: no
+      src: /home/{{hostvars[inventory_hostname]['ansible_user']}}/temp/opt/
+      dest: /root/ansiConfig/{{hostvars[inventory_hostname]['ansible_host']}}/

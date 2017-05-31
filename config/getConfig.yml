@@ -33,27 +33,9 @@
       mode: pull
       owner: no
       src: /etc/syslog-ng
-      dest: /root/ansiConfig/
+      dest: /root/ansiConfig/config/
   - synchronize: 
       mode: pull
       owner: no
       src: /home/riggsc/temp/opt/
-      dest: /root/ansiConfig/
-
-# sync info to targets
-- hosts: test
-  gather_facts: no
-  # becuase of permissions in /opt and /etc requires root
-  become: true
-  become_user: root
-  tasks: 
-  - synchronize:
-      mode: push
-      owner: no
-      dest: /opt/
-      src: /root/ansiConfig/splunk-syslog
-  - synchronize:
-      mode: push
-      owner: no
-      dest: /etc/
-      src: /root/ansiConfig/syslog-ng
+      dest: /root/ansiConfig/config/
