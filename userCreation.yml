@@ -11,7 +11,7 @@
   tasks:
   - user:
       name: ansible
-      groups: "sudo"
+      groups: "wheel"
 # SHA-512 a password and supply it in this line
       password: SHA-512(PASSWORD) 
   - name: Add key
