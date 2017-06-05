@@ -5,13 +5,10 @@
 #   and the directory structure from /opt/splunk-syslog.
 #   These are coppied into the root directories ansiConfig folder.
 #   From there they can be edited or deployed to other hosts using
-#   the syncronize module.
+#   the deployConfig play.
 #
 # Runtime:
 #   To run on this VM simply sudo ansible-playbook getConfig.yml
-#
-# ToDo:
-#  [ ] Deploy config to other machines
 #
 
 # get info from splunkDev host

@@ -1,14 +1,11 @@
 ---
 # Written by Caleb Riggs
 # Details:
-#   This playbook is mean to grab all config files from /etc/syslog-ng
-#   and the directory structure from /opt/splunk-syslog.
-#   These are coppied into the root directories ansiConfig folder.
-#   From there they can be edited or deployed to other hosts using
-#   the syncronize module.
+#   This playbook will deploy a config from the controllers root/ansiConfig/config folder
+#   to the remote hosts /etc/syslog-ng and /opt/splunk-syslog.
 #
 # Runtime:
-#   To run on this VM simply sudo ansible-playbook getConfig.yml
+#   To run on this VM simply sudo ansible-playbook deployConfig.yml -K
 #
 
 # sync info to targets
