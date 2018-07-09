@@ -1,6 +1,5 @@
 ---
-- hosts: devBox
+- hosts: all
   tasks:
   - name: Test Connection
     ping:
-  
